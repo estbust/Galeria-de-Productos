@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galería de Productos - Manipulación del DOM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Encabezado -->
+      <header class="header">
+        <div class="badge-tag">Catálogo Interactivo</div>
+        <h1 class="title">Galería de Productos</h1>
+        <p class="subtitle">Explora y filtra artículos dinámicamente con JavaScript y manipulación del DOM</p>
+      </header>
+
+      <!-- Panel de Controles y Filtros -->
+      <section class="filters-card" aria-label="Controles de filtrado">
+        <!-- Paso 3: Filtrar por categoría -->
+        <div class="filter-group">
+          <label class="filter-label">
+            <span class="filter-icon">🏷️</span> Filtrar por Categoría:
+          </label>
+          <div id="contenedor-categorias" class="category-buttons" role="group" aria-label="Filtro de categorías">
+            <!-- Botones generados dinámicamente o predefinidos -->
+            <button type="button" class="btn-category active" data-categoria="Todas">
+              Todas
+            </button>
+            <button type="button" class="btn-category" data-categoria="Tecnología">
+              💻 Tecnología
+            </button>
+            <button type="button" class="btn-category" data-categoria="Ropa">
+              👕 Ropa
+            </button>
+            <button type="button" class="btn-category" data-categoria="Hogar">
+              🏠 Hogar
+            </button>
+            <button type="button" class="btn-category" data-categoria="Deportes">
+              ⚽ Deportes
+            </button>
+          </div>
+        </div>
+
+        <!-- Paso 4: Filtrar por precio máximo -->
+        <div class="filter-group">
+          <label for="precio-maximo" class="filter-label">
+            <span class="filter-icon">💰</span> Filtrar por Precio Máximo:
+          </label>
+          <form id="form-precio" class="price-filter-form" onsubmit="event.preventDefault();">
+            <div class="input-wrapper">
+              <span class="currency-symbol">$</span>
+              <input
+                type="number"
+                id="precio-maximo"
+                name="precio-maximo"
+                placeholder="Ej. 100"
+                min="0"
+                step="1"
+              />
+            </div>
+            <button type="submit" id="btn-filtrar-precio" class="btn-action btn-primary">
+              Filtrar por Precio
+            </button>
+            <button type="button" id="btn-limpiar-filtros" class="btn-action btn-secondary" title="Restablecer todos los filtros">
+              ↺ Limpiar Filtros
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Barra informativa de resultados -->
+      <div class="results-bar">
+        <span id="contador-productos" class="counter-text">Cargando productos...</span>
+        <span id="indicador-filtro" class="filter-tag-active"></span>
+      </div>
+
+      <!-- Paso 2: Mostrar los productos en pantalla -->
+      <main>
+        <section id="contenedor-productos" class="products-grid" aria-live="polite">
+          <!-- Aquí se insertan dinámicamente las tarjetas con JavaScript mediante map() -->
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Demostración práctica de <strong>map()</strong>, <strong>filter()</strong> y <strong>Manipulación del DOM</strong> en JavaScript.</p>
+      </footer>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
